@@ -1,0 +1,167 @@
+;
+;OpenPGP Smartcard Minidriver for an x86 and x64 based package.
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=SmartCard
+ClassGuid={990A2BD7-E738-46c7-B26F-1CF8FB9F1391}
+Provider=%OPENPGP%
+CatalogFile.ntx86=openpgpmdrv32.cat
+CatalogFile.ntamd64=openpgpmdrv64.cat
+DriverVer=07/12/2014,1.0.0.0
+
+[Manufacturer]
+%OPENPGP%=OpenPGP,NTamd64,NTamd64.6.1,NTx86,NTx86.6.1
+
+[OpenPGP.NTamd64]
+%OpenPGPCardDeviceName%=OpenPGP64_Install,SCFILTER\CID_0031c573c00140009000
+
+[OpenPGP.NTx86]
+%OpenPGPCardDeviceName%=OpenPGP32_Install,SCFILTER\CID_0031c573c00140009000
+
+[OpenPGP.NTamd64.6.1]
+%OpenPGPCardDeviceName%=OpenPGP64_61_Install,SCFILTER\CID_0031c573c00140009000
+
+[OpenPGP.NTx86.6.1]
+%OpenPGPCardDeviceName%=OpenPGP32_61_Install,SCFILTER\CID_0031c573c00140009000
+
+[SourceDisksFiles]
+openpgpmdrv64.dll=1
+openpgpmdrv32.dll=1
+
+[SourceDisksNames]
+1 = %MediaDescription%
+
+[DefaultInstall.NTamd64]
+CopyFiles=amd64_CopyFiles
+CopyFiles=wow64_CopyFiles
+AddReg=AddRegWOW64
+AddReg=AddReg64
+
+[DefaultInstall.NTamd64.6.1]
+CopyFiles=amd64_CopyFiles
+CopyFiles=wow64_CopyFiles
+AddReg=AddRegWOW64
+AddReg=AddReg64
+Include=umpass.inf
+Needs=UmPass
+
+[OpenPGP64_Install.NT]
+CopyFiles=amd64_CopyFiles
+CopyFiles=wow64_CopyFiles
+AddReg=AddRegWOW64
+AddReg=AddReg64
+
+[OpenPGP64_61_Install.NT]
+CopyFiles=amd64_CopyFiles
+CopyFiles=wow64_CopyFiles
+AddReg=AddRegWOW64
+AddReg=AddReg64
+Include=umpass.inf
+Needs=UmPass
+
+[DefaultInstall.NTx86]
+CopyFiles=x86_CopyFiles
+AddReg=AddReg32
+
+[DefaultInstall.NTx86.6.1]
+CopyFiles=x86_CopyFiles
+AddReg=AddReg32
+Include=umpass.inf
+Needs=UmPass
+
+[OpenPGP32_Install.NT]
+CopyFiles=x86_CopyFiles
+AddReg=AddReg32
+
+[OpenPGP32_61_Install.NT]
+CopyFiles=x86_CopyFiles
+AddReg=AddReg32
+Include=umpass.inf
+Needs=UmPass
+
+[OpenPGP64_61_Install.NT.Services]
+Include=umpass.inf
+Needs=UmPass.Services
+
+[OpenPGP32_61_Install.NT.Services]
+Include=umpass.inf
+Needs=UmPass.Services
+
+
+[OpenPGP64_61_Install.NT.HW]
+Include=umpass.inf
+Needs=UmPass.HW
+
+[OpenPGP64_61_Install.NT.CoInstallers]
+Include=umpass.inf
+Needs=UmPass.CoInstallers
+
+
+[OpenPGP64_61_Install.NT.Interfaces]
+Include=umpass.inf
+Needs=UmPass.Interfaces
+
+
+[OpenPGP32_61_Install.NT.HW]
+Include=umpass.inf
+Needs=UmPass.HW
+
+[OpenPGP32_61_Install.NT.CoInstallers]
+Include=umpass.inf
+Needs=UmPass.CoInstallers
+
+
+[OpenPGP32_61_Install.NT.Interfaces]
+Include=umpass.inf
+Needs=UmPass.Interfaces
+
+
+[amd64_CopyFiles]
+%SmartCardCardModule64%
+
+[x86_CopyFiles]
+%SmartCardCardModule32%
+
+[wow64_CopyFiles]
+%SmartCardCardModule32%
+
+[AddRegWOW64]
+HKLM, %SmartCardNameWOW64%,"ATR",0x00000001,3B,DA,18,FF,81,B1,FE,75,1F,03,00,31,C5,73,C0,01,40,00,90,00,0C
+HKLM, %SmartCardNameWOW64%,"ATRMask",0x00000001,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff
+HKLM, %SmartCardNameWOW64%,"Crypto Provider",0x00000000,"Microsoft Base Smart Card Crypto Provider"
+HKLM, %SmartCardNameWOW64%,"Smart Card Key Storage Provider",0x00000000,"Microsoft Smart Card Key Storage Provider"
+HKLM, %SmartCardNameWOW64%,"80000001",0x00000000,%SmartCardCardModule32%
+
+[AddReg32]
+HKLM, %SmartCardName%,"ATR",0x00000001,3B,DA,18,FF,81,B1,FE,75,1F,03,00,31,C5,73,C0,01,40,00,90,00,0C
+HKLM, %SmartCardName%,"ATRMask",0x00000001,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff
+HKLM, %SmartCardName%,"Crypto Provider",0x00000000,"Microsoft Base Smart Card Crypto Provider"
+HKLM, %SmartCardName%,"Smart Card Key Storage Provider",0x00000000,"Microsoft Smart Card Key Storage Provider"
+HKLM, %SmartCardName%,"80000001",0x00000000,%SmartCardCardModule32%
+
+[AddReg64]
+HKLM, %SmartCardName%,"ATR",0x00000001,3B,DA,18,FF,81,B1,FE,75,1F,03,00,31,C5,73,C0,01,40,00,90,00,0C
+HKLM, %SmartCardName%,"ATRMask",0x00000001,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff
+HKLM, %SmartCardName%,"Crypto Provider",0x00000000,"Microsoft Base Smart Card Crypto Provider"
+HKLM, %SmartCardName%,"Smart Card Key Storage Provider",0x00000000,"Microsoft Smart Card Key Storage Provider"
+HKLM, %SmartCardName%,"80000001",0x00000000,%SmartCardCardModule64%
+
+
+[DestinationDirs]
+amd64_CopyFiles=10,system32
+x86_CopyFiles=10,system32
+wow64_CopyFiles=10,syswow64
+
+
+; =================== Generic ==================================
+
+[Strings]
+OPENPGP ="OpenPGP"
+MediaDescription="OpenPGP Smart Card Minidriver Installation Disk"
+OpenPGPCardDeviceName="OpenPGP Minidriver for Smart Card"
+SmartCardName="SOFTWARE\Microsoft\Cryptography\Calais\SmartCards\OpenPGP"
+SmartCardNameWOW64="SOFTWARE\Wow6432Node\Microsoft\Cryptography\Calais\SmartCards\OpenPGP"
+SmartCardCardModule32="openpgpmdrv32.dll"
+SmartCardCardModule64="openpgpmdrv64.dll"

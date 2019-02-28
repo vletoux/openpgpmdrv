@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?define UpgradeCode=8B9CBE88-4B41-4141-A75E-296BD0E4A827 ?>
+  <?define Version=1.0.0.0 ?>
+  <?define SourceDir = "$(var.SolutionDir)$(var.Platform)\$(var.Configuration)"?>
+  <?if $(var.Platform) = x64 ?>
+  <?define DestFolder = "ProgramFilesFolder64" ?>
+  <?else ?>
+  <?define DestFolder = "ProgramFilesFolder" ?>
+  <?endif?>
+</Include>
+

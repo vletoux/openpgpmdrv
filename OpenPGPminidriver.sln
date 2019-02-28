@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenPGPminidriver", "OpenPGPminidriver\OpenPGPminidriver.vcxproj", "{775DAB1D-5A49-4A57-B259-AD3DC833A75F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenPGPminidriverTest", "OpenPGPminidriverTest\OpenPGPminidriverTest.vcxproj", "{4E413ED7-0D68-47A9-AB93-39319815E730}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "OpenPGPSetup", "OpenPGPSetup\OpenPGPSetup.wixproj", "{24A3ABBC-4BD3-49F9-8883-61D26AAE1A92}"
+	ProjectSection(ProjectDependencies) = postProject
+		{775DAB1D-5A49-4A57-B259-AD3DC833A75F} = {775DAB1D-5A49-4A57-B259-AD3DC833A75F}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{775DAB1D-5A49-4A57-B259-AD3DC833A75F}.Debug|x64.ActiveCfg = Debug|x64
+		{775DAB1D-5A49-4A57-B259-AD3DC833A75F}.Debug|x64.Build.0 = Debug|x64
+		{775DAB1D-5A49-4A57-B259-AD3DC833A75F}.Debug|x86.ActiveCfg = Debug|Win32
+		{775DAB1D-5A49-4A57-B259-AD3DC833A75F}.Debug|x86.Build.0 = Debug|Win32
+		{775DAB1D-5A49-4A57-B259-AD3DC833A75F}.Debug|x86.Deploy.0 = Debug|Win32
+		{775DAB1D-5A49-4A57-B259-AD3DC833A75F}.Release|x64.ActiveCfg = Release|x64
+		{775DAB1D-5A49-4A57-B259-AD3DC833A75F}.Release|x64.Build.0 = Release|x64
+		{775DAB1D-5A49-4A57-B259-AD3DC833A75F}.Release|x86.ActiveCfg = Release|Win32
+		{775DAB1D-5A49-4A57-B259-AD3DC833A75F}.Release|x86.Build.0 = Release|Win32
+		{775DAB1D-5A49-4A57-B259-AD3DC833A75F}.Release|x86.Deploy.0 = Release|Win32
+		{4E413ED7-0D68-47A9-AB93-39319815E730}.Debug|x64.ActiveCfg = Debug|x64
+		{4E413ED7-0D68-47A9-AB93-39319815E730}.Debug|x64.Build.0 = Debug|x64
+		{4E413ED7-0D68-47A9-AB93-39319815E730}.Debug|x86.ActiveCfg = Debug|Win32
+		{4E413ED7-0D68-47A9-AB93-39319815E730}.Debug|x86.Build.0 = Debug|Win32
+		{4E413ED7-0D68-47A9-AB93-39319815E730}.Debug|x86.Deploy.0 = Debug|Win32
+		{4E413ED7-0D68-47A9-AB93-39319815E730}.Release|x64.ActiveCfg = Release|x64
+		{4E413ED7-0D68-47A9-AB93-39319815E730}.Release|x64.Build.0 = Release|x64
+		{4E413ED7-0D68-47A9-AB93-39319815E730}.Release|x86.ActiveCfg = Release|Win32
+		{4E413ED7-0D68-47A9-AB93-39319815E730}.Release|x86.Build.0 = Release|Win32
+		{4E413ED7-0D68-47A9-AB93-39319815E730}.Release|x86.Deploy.0 = Release|Win32
+		{24A3ABBC-4BD3-49F9-8883-61D26AAE1A92}.Debug|x64.ActiveCfg = Debug|x64
+		{24A3ABBC-4BD3-49F9-8883-61D26AAE1A92}.Debug|x86.ActiveCfg = Debug|x86
+		{24A3ABBC-4BD3-49F9-8883-61D26AAE1A92}.Release|x64.ActiveCfg = Release|x64
+		{24A3ABBC-4BD3-49F9-8883-61D26AAE1A92}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

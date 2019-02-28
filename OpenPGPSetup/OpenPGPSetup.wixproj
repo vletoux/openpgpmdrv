@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.7</ProductVersion>
+    <ProjectGuid>24a3abbc-4bd3-49f9-8883-61d26aae1a92</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>OpenPGPSetup</OutputName>
+    <OutputType>Package</OutputType>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>$(SolutionDir)$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug</DefineConstants>
+    <LinkerAdditionalOptions>"C:\Program Files (x86)\WiX Toolset v3.11\bin\difxapp_x86.wixlib"</LinkerAdditionalOptions>
+    <SuppressPdbOutput>True</SuppressPdbOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>$(SolutionDir)$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <LinkerAdditionalOptions>"C:\Program Files (x86)\WiX Toolset v3.11\bin\difxapp_x86.wixlib"</LinkerAdditionalOptions>
+    <SuppressPdbOutput>True</SuppressPdbOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DefineConstants>Debug</DefineConstants>
+    <OutputPath>$(SolutionDir)$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+    <LinkerAdditionalOptions>"C:\Program Files (x86)\WiX Toolset v3.11\bin\difxapp_x64.wixlib"</LinkerAdditionalOptions>
+    <SuppressPdbOutput>True</SuppressPdbOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>$(SolutionDir)$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+    <LinkerAdditionalOptions>"C:\Program Files (x86)\WiX Toolset v3.11\bin\difxapp_x64.wixlib"</LinkerAdditionalOptions>
+    <SuppressPdbOutput>True</SuppressPdbOutput>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Product.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bannrbmp.bmp" />
+    <Content Include="dlgbmp.bmp" />
+    <Content Include="gnu-lgpl.rtf" />
+    <Content Include="openpgpmdrv-include.wxi" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixDifxAppExtension">
+      <HintPath>$(WixExtDir)\WixDifxAppExtension.dll</HintPath>
+      <Name>WixDifxAppExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <PropertyGroup>
+    <PreBuildEvent>copy $(OutDir)..\..\OpenPGPminidriver\%2a.inf  $(OutDir)
+IF /I "$(PlatformName)" == "x86" copy "$(OutDir)..\..\x64\$(ConfigurationName)\openpgpmdrv64.dll" "$(OutDir)"
+IF /I "$(PlatformName)" == "x64" copy "$(OutDir)..\..\x86\$(ConfigurationName)\openpgpmdrv32.dll" "$(OutDir)"
+
+IF /I "$(ConfigurationName)" == "Release" "C:\Program Files (x86)\Windows Kits\8.0\bin\x86\signtool.exe" sign  /d OpenPGPmdrv /tr http://timestamp.digicert.com /td sha256 /fd sha256 /n "Ping Castle SAS"  "$(TargetDir)openpgpmdrv64.dll" "$(TargetDir)openpgpmdrv32.dll" 
+
+"C:\Program Files (x86)\Windows Kits\8.0\bin\x86\inf2cat.exe" /driver:$(OutDir) /os:Vista_X86,Vista_X64,7_X86,7_X64,Server2008R2_X64,Server2008_X64,Server2008_X86,Server2003_X64,Server2003_X86,XP_X64,XP_X86
+
+IF /I "$(ConfigurationName)" == "Release" "C:\Program Files (x86)\Windows Kits\8.0\bin\x86\signtool.exe" sign  /d OpenPGPmdrv /tr http://timestamp.digicert.com /td sha256 /fd sha256 /n "Ping Castle SAS"  "$(TargetDir)openpgpmdrv64.cat" "$(TargetDir)openpgpmdrv32.cat"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>IF /I "$(ConfigurationName)" == "Release" "C:\Program Files (x86)\Windows Kits\8.0\bin\x86\signtool.exe" sign  /d OpenPGPmdrv /tr http://timestamp.digicert.com /td sha256 /fd sha256 /n "Ping Castle SAS"  "$(TargetDir)OpenPGPSetup.msi"
+move "$(TargetDir)OpenPGPSetup.msi" "$(TargetDir)OpenPGPSetup-$(PlatformName)-$(ConfigurationName).msi"</PostBuildEvent>
+  </PropertyGroup>
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it.
+	Other similar extension points exist, see Wix.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>

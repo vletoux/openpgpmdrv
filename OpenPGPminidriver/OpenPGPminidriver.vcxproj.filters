@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="3%29 Microsoft Interface">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="1%29 Low level">
+      <UniqueIdentifier>{837fc4be-d865-4ba0-8c08-07e4a80f552a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources Files">
+      <UniqueIdentifier>{607493fb-0026-4e10-b7b5-4a7cc3b077fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2%29 Application">
+      <UniqueIdentifier>{f1f42f9d-603d-444c-a1b6-a4ea7bc2a114}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CardAndContainerProperties.c">
+      <Filter>3%29 Microsoft Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="CardCryptographicOperations.c">
+      <Filter>3%29 Microsoft Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="CardInitializationAndDeconstruct.c">
+      <Filter>3%29 Microsoft Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="CardKeyContainer.c">
+      <Filter>3%29 Microsoft Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="CardPinOperation.c">
+      <Filter>3%29 Microsoft Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="CardPublicDataOperation.c">
+      <Filter>3%29 Microsoft Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="CardSecureKeyInjection.c">
+      <Filter>3%29 Microsoft Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="DllMain.c">
+      <Filter>3%29 Microsoft Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="SmartCard.c">
+      <Filter>1%29 Low level</Filter>
+    </ClCompile>
+    <ClCompile Include="tlv.c">
+      <Filter>1%29 Low level</Filter>
+    </ClCompile>
+    <ClCompile Include="ContextManagement.c">
+      <Filter>2%29 Application</Filter>
+    </ClCompile>
+    <ClCompile Include="CryptoOperations.c">
+      <Filter>2%29 Application</Filter>
+    </ClCompile>
+    <ClCompile Include="PinOperations.c">
+      <Filter>2%29 Application</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicDataOperations.c">
+      <Filter>2%29 Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracing.c">
+      <Filter>2%29 Application</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CryptoOperations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PinOperations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicDataOperations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SmartCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tlv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cardmod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="openpgpmdrv.inf">
+      <Filter>Resources Files</Filter>
+    </None>
+    <None Include="OpenPGPminidriver.def">
+      <Filter>Resources Files</Filter>
+    </None>
+    <None Include="README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="version.rc">
+      <Filter>Resources Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?include $(sys.SOURCEFILEDIR)openpgpmdrv-include.wxs ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:difx='http://schemas.microsoft.com/wix/DifxAppExtension'>
+  <Product UpgradeCode="$(var.UpgradeCode)" Name="OpenPGP Smartcard minidriver (x64)" Id="*" Version="$(var.Version)" Manufacturer="MySmartLogon" Language="1033">
+    <Package Id="*" Manufacturer="MySmartLogon" InstallerVersion="200" Platform="x64" Languages="1033" Compressed="yes" SummaryCodepage="1252" />
+
+	<!-- do not edit the rtf file with word! The installer will be unable to read the license -->
+	<WixVariable Id="WixUILicenseRtf" Value="Resources\gnu-lgpl.rtf" />
+
+	<Upgrade Id='$(var.UpgradeCode)'>
+      <UpgradeVersion OnlyDetect='no' Property='OLDERFOUND'
+        Minimum='0.0.0.0' IncludeMinimum='yes'
+        Maximum='$(var.Version)' IncludeMaximum='no' />
+      <UpgradeVersion OnlyDetect='yes' Property='SELFFOUND'
+        Minimum='$(var.Version)' IncludeMinimum='yes'
+        Maximum='$(var.Version)' IncludeMaximum='yes' />
+      <UpgradeVersion OnlyDetect='yes' Property='NEWERFOUND'
+        Minimum='$(var.Version)' IncludeMinimum='no' />
+    </Upgrade>
+    <CustomAction Id='NoDowngrade' Error='A later version of OpenPGP Smartcard minidriver is already installed.' />
+	<CustomAction Id='AlreadyUpdated' Error='The current version of OpenPGP Smartcard minidriver is already installed.' />
+    <InstallExecuteSequence>
+      <Custom Action='AlreadyUpdated' After='FindRelatedProducts'>SELFFOUND</Custom>
+      <Custom Action='NoDowngrade' After='FindRelatedProducts'>NEWERFOUND</Custom>
+	  <RemoveExistingProducts Before="InstallInitialize" /> 
+	</InstallExecuteSequence>
+	<UIRef Id="WixUI_Minimal" />
+	<UIRef Id="WixUI_ErrorProgressText" />
+	<Directory Id="TARGETDIR" Name="SourceDir">
+	  <Directory Id="ProgramFilesFolder">
+	    <Directory Id="APPLICATIONROOTDIRECTORY" Name="OpenPGP Smartcard Minidriver">
+          <Component Id="openpgpmdrv" Guid="CE7DCBB4-8FF3-49af-AC0B-39A16C4DC8F7" >
+            <File Id="openpgpmdrv.inf" Name="openpgpmdrv.inf" Source="$(sys.SOURCEFILEDIR)Release\openpgpmdrv.inf" KeyPath="yes" DiskId="1" />
+            <File Id="openpgpmdrv64.cat" Name="openpgpmdrv64.cat" Source="$(sys.SOURCEFILEDIR)Release\openpgpmdrv.cat" KeyPath="no" DiskId="1" />
+            <File Id="openpgpmdrv32.dll" Name="openpgpmdrv32.dll" Source="$(sys.SOURCEFILEDIR)Release\openpgpmdrv32.dll" KeyPath="no" DiskId="1" />
+            <File Id="openpgpmdrv64.dll" Name="openpgpmdrv64.dll" Source="$(sys.SOURCEFILEDIR)Release\openpgpmdrv64.dll" KeyPath="no" DiskId="1" />
+	        <difx:Driver ForceInstall="no" PlugAndPlayPrompt="no" DeleteFiles="yes"  />
+          </Component>
+		</Directory>
+	  </Directory>
+	</Directory>
+    <Feature Id="DefaultFeature" Level="1">
+      <ComponentRef Id="openpgpmdrv" />
+    </Feature>
+    <Media Id="1" EmbedCab="yes" Cabinet="_6F571DCE799A4EBF99CB3F31745F03E2" />
+  </Product>
+</Wix>

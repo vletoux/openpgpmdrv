@@ -1437,12 +1437,13 @@ DWORD OCardDecrypt(PCARD_DATA pCardData,
 	DWORD dwReturn;
 	PBYTE pbData = NULL;
 	DWORD dwCmdSize = 0, dwResponseSize;
-	BYTE pbCmd[6 + 256 + 256] = {0x00, 
-				    0x2A,
-					0x80,
-					0x86,
-					0x00,
-					};
+	PBYTE pbCmd = NULL;
+	BYTE pbCmdInit[] = {0x00, 
+		0x2A,
+		0x80,
+		0x86,
+		0x00,
+	};
 	POPENPGP_CONTEXT pContext = (POPENPGP_CONTEXT) pCardData->pvVendorSpecific;
 	DWORD dwI, dwModulusSizeInBytes;
 	__try
@@ -1460,6 +1461,21 @@ DWORD OCardDecrypt(PCARD_DATA pCardData,
 			Trace(WINEVENT_LEVEL_ERROR, L"SCARD_E_NO_KEY_CONTAINER %d", pInfo->bContainerIndex);
 			__leave;
 		}
+		if (pInfo->cbData >= 256 && !pContext->fExtentedLeLcFields)
+		{
+			//TODO - implemented command chaining
+			Trace(WINEVENT_LEVEL_ERROR, L"Chaining not implemented");
+			dwReturn = SCARD_E_UNSUPPORTED_FEATURE;
+			__leave;
+		}
+		pbCmd = (PBYTE) malloc( 6 + 256 + pInfo->cbData);
+		if (!pbCmd)
+		{
+			Trace(WINEVENT_LEVEL_ERROR, L"SCARD_E_NO_MEMORY");
+			dwReturn = SCARD_E_NO_MEMORY;
+			__leave;
+		}
+		memcpy(pbCmd, pbCmdInit, sizeof(pbCmdInit));
 		// check the buffer size
 		dwModulusSizeInBytes = pContext->dwModulusSizeInBytes[pInfo->bContainerIndex];
 		if (pInfo->cbData < dwModulusSizeInBytes)
@@ -1541,6 +1557,10 @@ DWORD OCardDecrypt(PCARD_DATA pCardData,
 		{
 			SecureZeroMemory(pbData, dwResponseSize);
 			pCardData->pfnCspFree(pbData);
+		}
+		if (pbCmd)
+		{
+			free(pbCmd);
 		}
 	}
 	Trace(WINEVENT_LEVEL_VERBOSE, L"dwReturn = 0x%08X",dwReturn);

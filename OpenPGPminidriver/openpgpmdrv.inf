@@ -138,7 +138,7 @@ HKLM, %SmartCardNameWOW64%,"Crypto Provider",0x00000000,"Microsoft Base Smart Ca
 HKLM, %SmartCardNameWOW64%,"Smart Card Key Storage Provider",0x00000000,"Microsoft Smart Card Key Storage Provider"
 HKLM, %SmartCardNameWOW64%,"80000001",0x00000000,%SmartCardCardModule32%
 
-HKLM, %SmartCardV3NameWOW64%,"ATR",0x00000001,3B,DA,18,FF,81,B1,FE,75,1F,03,00,31,C5,73,C0,01,60,00,90,00,0C
+HKLM, %SmartCardV3NameWOW64%,"ATR",0x00000001,3B,DA,18,FF,81,B1,FE,75,1F,03,00,31,F5,73,C0,01,60,00,90,00,1C
 HKLM, %SmartCardV3NameWOW64%,"ATRMask",0x00000001,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff
 HKLM, %SmartCardV3NameWOW64%,"Crypto Provider",0x00000000,"Microsoft Base Smart Card Crypto Provider"
 HKLM, %SmartCardV3NameWOW64%,"Smart Card Key Storage Provider",0x00000000,"Microsoft Smart Card Key Storage Provider"
@@ -151,7 +151,7 @@ HKLM, %SmartCardName%,"Crypto Provider",0x00000000,"Microsoft Base Smart Card Cr
 HKLM, %SmartCardName%,"Smart Card Key Storage Provider",0x00000000,"Microsoft Smart Card Key Storage Provider"
 HKLM, %SmartCardName%,"80000001",0x00000000,%SmartCardCardModule32%
 
-HKLM, %SmartCardV3Name%,"ATR",0x00000001,3B,DA,18,FF,81,B1,FE,75,1F,03,00,31,C5,73,C0,01,60,00,90,00,0C
+HKLM, %SmartCardV3Name%,"ATR",0x00000001,3B,DA,18,FF,81,B1,FE,75,1F,03,00,31,F5,73,C0,01,60,00,90,00,1C
 HKLM, %SmartCardV3Name%,"ATRMask",0x00000001,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff
 HKLM, %SmartCardV3Name%,"Crypto Provider",0x00000000,"Microsoft Base Smart Card Crypto Provider"
 HKLM, %SmartCardV3Name%,"Smart Card Key Storage Provider",0x00000000,"Microsoft Smart Card Key Storage Provider"
@@ -164,7 +164,7 @@ HKLM, %SmartCardName%,"Crypto Provider",0x00000000,"Microsoft Base Smart Card Cr
 HKLM, %SmartCardName%,"Smart Card Key Storage Provider",0x00000000,"Microsoft Smart Card Key Storage Provider"
 HKLM, %SmartCardName%,"80000001",0x00000000,%SmartCardCardModule64%
 
-HKLM, %SmartCardV3Name%,"ATR",0x00000001,3B,DA,18,FF,81,B1,FE,75,1F,03,00,31,C5,73,C0,01,60,00,90,00,0C
+HKLM, %SmartCardV3Name%,"ATR",0x00000001,3B,DA,18,FF,81,B1,FE,75,1F,03,00,31,F5,73,C0,01,60,00,90,00,1C
 HKLM, %SmartCardV3Name%,"ATRMask",0x00000001,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff
 HKLM, %SmartCardV3Name%,"Crypto Provider",0x00000000,"Microsoft Base Smart Card Crypto Provider"
 HKLM, %SmartCardV3Name%,"Smart Card Key Storage Provider",0x00000000,"Microsoft Smart Card Key Storage Provider"
@@ -185,7 +185,7 @@ MediaDescription="OpenPGP Smart Card Minidriver Installation Disk"
 OpenPGPCardDeviceName="OpenPGP Minidriver for Smart Card"
 SmartCardName="SOFTWARE\Microsoft\Cryptography\Calais\SmartCards\OpenPGP"
 SmartCardNameWOW64="SOFTWARE\Wow6432Node\Microsoft\Cryptography\Calais\SmartCards\OpenPGP"
-SmartCardV3Name="SOFTWARE\Microsoft\Cryptography\Calais\SmartCards\OpenPGP V3"
-SmartCardV3NameWOW64="SOFTWARE\Wow6432Node\Microsoft\Cryptography\Calais\SmartCards\OpenPGP V3"
+SmartCardV3Name="SOFTWARE\Microsoft\Cryptography\Calais\SmartCards\OpenPGP v3"
+SmartCardV3NameWOW64="SOFTWARE\Wow6432Node\Microsoft\Cryptography\Calais\SmartCards\OpenPGP v3"
 SmartCardCardModule32="openpgpmdrv32.dll"
 SmartCardCardModule64="openpgpmdrv64.dll"
